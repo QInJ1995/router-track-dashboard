@@ -1,14 +1,4 @@
-type IName = {
-    name: string
-    id: number
-}
-
-const name: IName = {
-    name: "John",
-    id: 1
-}
+import TrackRouter from './trackRouter'
 
 
-export default {
-    name 
-}
+export default TrackRouter
