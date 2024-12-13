@@ -1,4 +1,3 @@
-import TrackRouter from './trackRouter'
+import { createTrackRouter } from "./trackRouter";
 
-
-export default TrackRouter
+export { createTrackRouter };

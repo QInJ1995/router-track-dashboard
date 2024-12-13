@@ -1,3 +1,5 @@
-interface TrackRouterOptions {
-    frameName: string; // frame name
+
+export interface TrackRouterOptions {
+  frameName: string; // frame name
 }
+
