@@ -1,138 +1,117 @@
-
-
 <template>
   <div class="table-view">
     <a-table
+      defaultExpandAllRows
       :columns="columns"
-      :data-source="data"
-      :row-selection="rowSelection"
-    />
+      :data-source="routesTree"
+      :pagination="false"
+    >
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'params'">
+          <div>
+            <a-input v-model:value="record.params" style="margin: -5px 0" />
+          </div>
+        </template>
+        <template v-if="column.key === 'action'">
+          <span>
+            <a @click="() => open(record)">打开</a>
+            <a-divider type="vertical" />
+            <a @click="() => copy(record)">复制</a>
+          </span>
+        </template>
+      </template>
+    </a-table>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { Table as ATable } from "ant-design-vue";
+import { defineProps } from "vue";
+import {
+  Table as ATable,
+  Divider as ADivider,
+  Input as AInput,
+  message,
+} from "ant-design-vue";
+import { ColumnsType } from "ant-design-vue/es/table/Table";
 
-
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-    width: "12%",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    width: "30%",
-    key: "address",
-  },
-];
-
-interface DataItem {
-  key: number;
-  name: string;
-  age: number;
-  address: string;
-  children?: DataItem[];
-}
-
-const data: DataItem[] = [
-  {
-    key: 1,
-    name: "John Brown sr.",
-    age: 60,
-    address: "New York No. 1 Lake Park",
-    children: [
-      {
-        key: 11,
-        name: "John Brown",
-        age: 42,
-        address: "New York No. 2 Lake Park",
-      },
-      {
-        key: 12,
-        name: "John Brown jr.",
-        age: 30,
-        address: "New York No. 3 Lake Park",
-        children: [
-          {
-            key: 121,
-            name: "Jimmy Brown",
-            age: 16,
-            address: "New York No. 3 Lake Park",
-          },
-        ],
-      },
-      {
-        key: 13,
-        name: "Jim Green sr.",
-        age: 72,
-        address: "London No. 1 Lake Park",
-        children: [
-          {
-            key: 131,
-            name: "Jim Green",
-            age: 42,
-            address: "London No. 2 Lake Park",
-            children: [
-              {
-                key: 1311,
-                name: "Jim Green jr.",
-                age: 25,
-                address: "London No. 3 Lake Park",
-              },
-              {
-                key: 1312,
-                name: "Jimmy Green sr.",
-                age: 18,
-                address: "London No. 4 Lake Park",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    key: 2,
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-  },
-];
-
-const rowSelection = ref({
-  checkStrictly: false,
-  onChange: (
-    selectedRowKeys: (string | number)[],
-    selectedRows: DataItem[]
-  ) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
-  },
-  onSelect: (record: DataItem, selected: boolean, selectedRows: DataItem[]) => {
-    console.log(record, selected, selectedRows);
-  },
-  onSelectAll: (
-    selected: boolean,
-    selectedRows: DataItem[],
-    changeRows: DataItem[]
-  ) => {
-    console.log(selected, selectedRows, changeRows);
-  },
-});
+// 初始化表格配置
+const initTableCfg = function () {
+  const columns: ColumnsType = [
+    {
+      title: "路由路径",
+      dataIndex: "path",
+      key: "path",
+      width: "300px",
+    },
+    {
+      title: "路由名",
+      dataIndex: "name",
+      key: "name",
+      width: "200px",
+    },
+    {
+      title: "路由组件路径",
+      dataIndex: "componentPath",
+      key: "componentPath",
+    },
+    {
+      title: "自定义参数",
+      key: "params",
+      dataIndex: "params",
+      width: "500px",
+    },
+    {
+      title: "操作",
+      key: "action",
+      width: "120px",
+      align: "center",
+    },
+  ];
+  return { columns };
+};
+// 操作列事件
+const actions = function () {
+  function open(record: any) {
+    const { path, params } = record;
+    const { origin } = window.location;
+    window.open(`${origin}${path}${params ? "?" + params : ""}`);
+  }
+  function copy(record: any) {
+    const { path, params } = record;
+    const { origin } = window.location;
+    navigator.clipboard
+      .writeText(`${origin}${path}${params ? "?" + params : ""}`)
+      .then(() => {
+        message.success("地址复制成功！");
+      })
+      .catch((err) => {
+        message.error("地址复制失败！");
+      });
+  }
+  return { open, copy };
+};
+const { routesTree } = defineProps(["routesTree"]);
+const { columns } = initTableCfg();
+const { open, copy } = actions();
 </script>
 
-<style>
+<style scoped>
+a {
+  color: #7957d5 !important;
+}
 
+.ant-input:focus {
+  border-color: #7957d5;
+}
+
+:deep(.ant-table-thead) {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+:deep(.ant-table-cell-row-hover) {
+  background-color: rgba(121, 87, 213, 0.1) !important;
+}
 </style>
