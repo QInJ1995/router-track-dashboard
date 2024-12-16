@@ -10,3 +10,4 @@ dist
 .vitepress/cache
 .vitepress/dist
 package-lock.json
+components.d.ts

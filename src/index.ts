@@ -1,3 +1,3 @@
-import { createTrackRouter } from "./trackRouter";
+import { createRouterTrackDashboard } from "./trackRouter";
 
-export { createTrackRouter };
+export { createRouterTrackDashboard };

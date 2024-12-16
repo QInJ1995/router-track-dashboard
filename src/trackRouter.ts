@@ -18,6 +18,6 @@ class TrackRouter {
 }
 
 // 创建TrackRouter
-export const createTrackRouter = function (options?: TrackRouterOptions) {
+export const createRouterTrackDashboard = function (options?: TrackRouterOptions) {
   return new TrackRouter(options as TrackRouterOptions);
 };

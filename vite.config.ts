@@ -18,24 +18,17 @@ export default defineConfig({
       ],
     }),
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/styles/variables.scss";` // 如果需要全局变量
-      }
-    }
-  },
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "trackRouter",
-      fileName: (format) => `track-router.${format}.js`,
+      name: "routerTrackDashboard",
+      fileName: (format) => `router-track-dashboard.${format}.js`,
     },
     rollupOptions: {
       external: ["vue", "react", "react-dom"], // 排除 Vue 和 React，避免重复打包
       output: {
         globals: {
-          vue: "Vue",
+          vue: "vue",
           react: "React",
           "react-dom": "ReactDOM",
         },
