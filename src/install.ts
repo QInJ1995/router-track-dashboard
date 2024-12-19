@@ -9,7 +9,7 @@ const install = function (app: any, ...args: any[]) {
     // 动态添加路由
     router.addRoute({
       path: BASE_PATE,
-      name: "TrackRouter",
+      name: "RouterTrack",
       component: () => import("./pages/index.vue"), // 动态加载组件
     });
     // 匹配路径进行跳转
@@ -21,7 +21,7 @@ const install = function (app: any, ...args: any[]) {
       });
     }
   } else {
-    console.warn("[TrackRouter]-app未配置router，无法使用此插件");
+    console.warn("[RouterTrack]-app未配置router，无法使用此插件");
   }
 };
 

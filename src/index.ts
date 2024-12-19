@@ -1,3 +1,6 @@
-import { createRouterTrackDashboard } from "./trackRouter";
+import RouterTrack from "./routerTrack";
+import { RouterTrackOptions } from "./types";
 
-export { createRouterTrackDashboard };
+export const createRouterTrack = function (options?: RouterTrackOptions) {
+  return new RouterTrack(options as RouterTrackOptions);
+};

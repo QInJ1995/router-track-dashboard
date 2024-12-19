@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <a-layout class="layout">
-      <a-layout-header class="layout-header">TRACK ROUTER</a-layout-header>
+      <a-layout-header class="layout-header">ROUTER TRACK</a-layout-header>
       <a-layout-content class="layout-content">
         <table-view :routesTree="routesTree"></table-view>
       </a-layout-content>
@@ -13,10 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter, RouteRecordNormalized, Router } from "vue-router";
 import { onBeforeMount, ref } from "vue";
-import { routesToTree } from "../utils";
+import { mapRoutes } from "../utils";
 import TableView from "./components/tableView.vue";
+import { RouteRecordRaw, useRouter } from "vue-router";
 import {
   Layout as ALayout,
   LayoutHeader as ALayoutHeader,
@@ -24,12 +24,10 @@ import {
   LayoutFooter as ALayoutFooter,
 } from "ant-design-vue";
 import { RouteRecord } from "../types";
-
+const router = useRouter();
 const routesTree = ref([] as RouteRecord[]);
 onBeforeMount(() => {
-  const router: Router = useRouter();
-  const routes: RouteRecordNormalized[] = router.getRoutes();
-  routesTree.value = routesToTree(routes);
+  routesTree.value = mapRoutes(router.options.routes as RouteRecordRaw[]);
 });
 </script>
 

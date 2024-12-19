@@ -3,59 +3,24 @@ import { RouteRecord } from "../types";
 import { BASE_PATE } from "../common";
 
 /**
- * routes 转树处理
+ * routes 映射路由
  * @param routes
  * @returns
  */
-export function routesToTree(routes: RouteRecordNormalized[]): RouteRecord[] {
-  const list: RouteRecord[] = [];
-  const hasChildrenList: RouteRecordNormalized[] = routes.filter(
-    (route) => route.children && route.children.length
-  );
-  routes.forEach((route) => {
-    if (
-      !hasChildrenList.find((hasChild) =>
-        hasChild.children.find(
-          (child) => child.path === route.path && child.name === route.name
-        )
-      )
-    ) {
-      const { path, name, components, children } = route;
-      path !== BASE_PATE &&
-        list.push({
-          key: path,
-          path,
-          name: name as string,
-          componentPath: getComponentPath(components),
-          children: childrenToTree(children, path),
-        });
-    }
-  });
-  return list;
-}
-
-/**
- * children 转树处理
- * @param children
- * @returns
- */
-function childrenToTree(
-  children: RouteRecordRaw[] | undefined,
-  parentPath: string
-): RouteRecord[] | undefined {
-  if (!children) return;
-  return children.map((child) => {
-    let { path, name, component, children } = child;
-    path = (parentPath + path).replace("//", "/");
-    return {
+export function mapRoutes(routes: RouteRecordRaw[]): RouteRecord[] {
+  return routes.map((route) => {
+    const { path, name, component, children } = route;
+    const newRoute: RouteRecord = {
       key: path,
       path,
-      name,
+      name: name as string,
       componentPath: getComponentPath(component),
-      children: childrenToTree(children, path),
-    } as RouteRecord;
+    };
+    children && (newRoute.children = mapRoutes(children));
+    return newRoute;
   });
 }
+
 
 /**
  * 获取组件路径
@@ -65,9 +30,9 @@ function childrenToTree(
 function getComponentPath(component: any): string {
   let componentPath: string = "";
   if (component) {
-    let defaultVale = component.default || component;
-    if (typeof defaultVale === "function") {
-      defaultVale = defaultVale.toString();
+    let defaultVale = "";
+    if (typeof component === "function") {
+      defaultVale = component.toString();
       const regex = defaultVale.includes("?t=")
         ? /import\("(.+?)\?t=\d+"\)/
         : /import\("(.*?)"\)/;
@@ -75,7 +40,7 @@ function getComponentPath(component: any): string {
       componentPath = match ? match[1] : "";
     } else {
       const regex = /^.*(\/src\/views\/.*)$/;
-      const match = defaultVale.__file.match(regex);
+      const match = component.__file.match(regex);
       componentPath = match ? match[1] : "";
     }
   }

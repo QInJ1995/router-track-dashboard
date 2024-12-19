@@ -1,1 +1,1 @@
-export const BASE_PATE = "/router-track-dashboard";
+export const BASE_PATE = "/router-track";
