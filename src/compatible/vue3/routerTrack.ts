@@ -1,4 +1,4 @@
-import { RouterTrackOptions } from "./types";
+import { RouterTrackOptions } from "../../types";
 import install from "./install";
 
 export default class RouterTrack {

@@ -1,5 +1,5 @@
 import { nextTick } from "vue";
-import { BASE_PATE } from "./common";
+import { BASE_PATE } from "../../common";
 
 // 安装
 const install = function (app: any, ...args: any[]) {
@@ -10,7 +10,7 @@ const install = function (app: any, ...args: any[]) {
     router.addRoute({
       path: BASE_PATE,
       name: "RouterTrack",
-      component: () => import("./pages/index.vue"), // 动态加载组件
+      component: () => import("../../pages/index.vue"), // 动态加载组件
     });
     // 匹配路径进行跳转
     const { pathname } = window.location;

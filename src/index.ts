@@ -1,4 +1,4 @@
-import RouterTrack from "./routerTrack";
+import RouterTrack from "./compatible/vue3/routerTrack";
 import { RouterTrackOptions } from "./types";
 
 export const createRouterTrack = function (options?: RouterTrackOptions) {
