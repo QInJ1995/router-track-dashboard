@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+dist-ssr
+cache
+dist
+.cache
+.temp
+.history
+*.local
+.vitepress/cache
+.vitepress/dist
+package-lock.json
+components.d.ts
+.vscode
