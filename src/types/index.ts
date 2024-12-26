@@ -1,4 +1,9 @@
-export interface RouterTrackOptions {}
+export interface IRouterTrackOptions {
+  path?: string;
+  router?: any;
+}
+
+export type RouterTrackOptions = IRouterTrackOptions | undefined;
 
 export interface RouteRecord {
   key?: string;

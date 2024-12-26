@@ -1,4 +1,4 @@
-import RouterTrack from "./routerTrack";
+import RouterTrack from "./RouterTrack";
 import { RouterTrackOptions } from "./types";
 
 export const createRouterTrack = function (options?: RouterTrackOptions) {

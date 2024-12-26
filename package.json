@@ -1,5 +1,5 @@
 {
-  "name": "router-track",
+  "name": "router-track-vue3",
   "version": "1.0.0",
   "description": "A Router Track plugin for Vue",
   "main": "dist/router-track.es.js",
@@ -10,13 +10,17 @@
     "dev": "vite"
   },
   "keywords": [
-    "router-track"
+    "router-track--vue3"
   ],
   "author": "秦佬湿",
   "license": "MIT",
   "dependencies": {
     "ant-design-vue": "^4.2.6"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",

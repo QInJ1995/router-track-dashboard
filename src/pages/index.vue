@@ -6,7 +6,7 @@
         <table-view :routesTree="routesTree"></table-view>
       </a-layout-content>
       <a-layout-footer class="layout-footer">
-        Ant Design ©2024 Created by 秦佬湿
+        Design ©2024 Created by 秦佬湿
       </a-layout-footer>
     </a-layout>
   </div>
