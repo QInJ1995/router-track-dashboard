@@ -1,12 +1,15 @@
 <template>
   <div>
-    1111
+    <Button type="primary">Primary</Button>
   </div>
 </template>
 
 <script>
+import { Button } from 'element-ui'
 export default {
-
+  components: {
+    Button
+  }
 }
 </script>
 
