@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { onBeforeMount, ref } from "vue";
-import { mapRoutes, RouteRecord } from "shared-lib";
+import { mapRoutes, RouteRecord } from "router-track-common";
 import TableView from "./components/tableView.vue";
 import { RouteRecordRaw, useRouter } from "vue-router";
 import {

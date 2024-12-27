@@ -1,6 +1,5 @@
 import { nextTick } from "vue";
-import { BASE_PATE, SET_BASE_PATE } from "shared-lib";
-import { RouterTrackOptions } from "shared-lib";
+import { BASE_PATE, SET_BASE_PATE, RouterTrackOptions } from "router-track-common";
 
 // 安装
 const install = function (app: any, options: RouterTrackOptions) {

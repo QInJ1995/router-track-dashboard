@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue2": "^2.3.3",
-    "shared-lib": "workspace:*",
+    "router-track-common": "workspace:*",
     "typescript": "^5.7.2",
     "vite": "^6.0.6",
     "vite-plugin-vue2": "^2.0.3",

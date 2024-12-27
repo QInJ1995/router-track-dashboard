@@ -1,4 +1,4 @@
-import { RouterTrackOptions } from "shared-lib";
+import { RouterTrackOptions } from "router-track-common";
 import install from "./install";
 
 export default class RouterTrack {
