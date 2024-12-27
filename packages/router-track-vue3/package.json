@@ -1,6 +1,6 @@
 {
   "name": "router-track-vue3",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A Router Track plugin for Vue3",
   "main": "dist/router-track-vue3.es.js",
   "types": "dist/types/index.d.ts",
