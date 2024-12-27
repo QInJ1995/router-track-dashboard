@@ -10,5 +10,4 @@ dist
 .vitepress/cache
 .vitepress/dist
 package-lock.json
-pnpm-lock.yaml
 .vscode
