@@ -20,13 +20,14 @@
     "README.md"
   ],
   "devDependencies": {
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue2": "^2.3.3",
+    "shared-lib": "workspace:*",
     "typescript": "^5.7.2",
     "vite": "^6.0.6",
     "vite-plugin-vue2": "^2.0.3",
     "vue": "2",
     "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.1.2",
-    "shared-lib": "workspace:*"
+    "vue-property-decorator": "^9.1.2"
   }
 }

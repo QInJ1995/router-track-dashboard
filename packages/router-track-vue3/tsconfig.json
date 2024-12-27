@@ -13,6 +13,6 @@
     "outDir": "./dist", // 指定编译后的文件输出目录。这里设置为 ./dist。
     "emitDeclarationOnly": true // 只生成声明文件，不输出 JavaScript 文件
   },
-  "include": ["src/**/*"], // 指定要包含在编译中的文件或目录。这里设置为 src/**/*，表示包含 src 目录下的所有文件和子目录。
+  "include": ["src/**/*", "shims-vue.d.ts"], // 指定要包含在编译中的文件或目录。这里设置为 src/**/*，表示包含 src 目录下的所有文件和子目录。
   "exclude": ["node_modules", "dist"] // 指定要从编译中排除的文件或目录。这里设置为 node_modules 和 dist，表示排除这两个目录。
 }

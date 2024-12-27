@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import {} from 'router-track-vue2'
+import {createRouterTrack} from 'router-track-vue2'
+console.log("🚀 ~ createRouterTrack:", createRouterTrack)
+
+Vue.use(createRouterTrack({router}))
 
 Vue.config.productionTip = false
 
