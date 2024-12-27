@@ -2,19 +2,10 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue2";
 import path from "path";
-// import Components from "unplugin-vue-components/vite";
-// import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
   plugins: [
     vue(),
-    // Components({
-    //   resolvers: [
-    //     AntDesignVueResolver({
-    //       importStyle: true, // css in js
-    //     }),
-    //   ],
-    // }),
   ],
   resolve: {
     alias: {
@@ -25,7 +16,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "RouterTrack", // UMD 模块的全局变量名称
-      fileName: (format) => `router-track.${format}.js`,
+      fileName: (format) => `router-track-vue2.${format}.js`,
       formats: ["es", "umd"], // 支持 ES 模块格式
     },
     rollupOptions: {

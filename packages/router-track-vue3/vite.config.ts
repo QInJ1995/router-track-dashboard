@@ -25,7 +25,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "RouterTrack", // UMD 模块的全局变量名称
-      fileName: (format) => `router-track.${format}.js`,
+      fileName: (format) => `router-track-vue3.${format}.js`,
       formats: ["es", "umd"], // 支持 ES 模块格式
     },
     rollupOptions: {

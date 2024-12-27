@@ -59,6 +59,7 @@ const initTableCfg = function () {
       key: "params",
       dataIndex: "params",
       width: "500px",
+      placeholder: "输入地址参数: a=1&b=2",
     },
     {
       title: "操作",

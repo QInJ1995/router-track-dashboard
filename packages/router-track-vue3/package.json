@@ -2,13 +2,15 @@
   "name": "router-track-vue3",
   "version": "1.0.1",
   "description": "A Router Track plugin for Vue3",
-  "main": "dist/router-track.es.js",
+  "main": "dist/router-track-vue3.es.js",
   "types": "dist/types/index.d.ts",
   "style": "dist/style.css",
+  "private": false,
   "scripts": {
-    "build": "vite build && npm run build:types",
+    "build:loc": "vite build && npm run build:types",
     "build:types": "tsc",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "babel src --out-dir dist"
   },
   "keywords": [
     "router-track--vue3"
@@ -23,17 +25,20 @@
     "README.md"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-vue": "^5.2.1",
+    "router-track-common": "workspace:*",
     "typescript": "^5.7.2",
     "unplugin-vue-components": "^0.27.5",
     "vite": "^6.0.3",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.1.10",
-    "vue-types": "^5.1.3",
-    "router-track-common": "workspace:*"
+    "vue-types": "^5.1.3"
   }
 }

@@ -1,5 +1,10 @@
 import { nextTick } from "vue";
-import { BASE_PATE, SET_BASE_PATE, RouterTrackOptions } from "router-track-common";
+import {
+  BASE_PATE,
+  SET_BASE_PATE,
+  RouterTrackOptions,
+  printOpenPath,
+} from "router-track-common";
 
 // 安装
 const install = function (app: any, options: RouterTrackOptions) {
@@ -8,7 +13,7 @@ const install = function (app: any, options: RouterTrackOptions) {
   if (!router) {
     return console.warn("[RouterTrack]-app未配置router，无法使用此插件");
   }
-  console.log("🚀 ~ install ~ app:", router)
+  printOpenPath(); // 打印打开地址
   // 动态添加路由
   router.addRoute({
     path: BASE_PATE,
